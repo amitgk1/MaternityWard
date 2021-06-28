@@ -18,12 +18,18 @@ namespace MaternityWard
 
         protected WorkerRank[] ranks;
         Nullable<int> riskPercentage;
-        double workHours;
+        double workHours = 0;
 
-        public WorkerRank[] Ranks
+        public Worker(WorkerRank[] ranks, Nullable<int> riskPercentage = null)
         {
-            get { return ranks; }
-            set { ranks = value; }
+            this.ranks = ranks;
+            this.riskPercentage = riskPercentage;
+        }
+
+        public double WorkHours
+        {
+            get { return workHours; }
+            set { workHours = value; }
         }
         public double calculateSalary()
         {
