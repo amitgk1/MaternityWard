@@ -19,18 +19,29 @@ namespace MaternityWard
         protected WorkerRank[] ranks;
         Nullable<int> riskPercentage;
         double workHours = 0;
+        string workerType;
 
-        public Worker(WorkerRank[] ranks, Nullable<int> riskPercentage = null)
+        public Worker(WorkerRank[] ranks, int? riskPercentage = null, string workerType = null)
         {
             this.ranks = ranks;
             this.riskPercentage = riskPercentage;
+            this.workerType = workerType;
         }
 
         public double WorkHours
+            { get; set; }
+
+        public string WorkerType
+            { get; set; }
+
+        public static WorkerRank[] AddRankFirst(WorkerRank[] ranks, WorkerRank firstRank)
         {
-            get { return workHours; }
-            set { workHours = value; }
+            WorkerRank[] newRanks = new WorkerRank[ranks.Length + 1];
+            newRanks[0] = firstRank;
+            ranks.CopyTo(newRanks, 1);
+            return newRanks;
         }
+
         public double calculateSalary()
         {
             double raisedWorkHours = workHours;
