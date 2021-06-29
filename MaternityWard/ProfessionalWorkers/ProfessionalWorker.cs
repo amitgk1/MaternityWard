@@ -1,4 +1,4 @@
-﻿namespace MaternityWard
+﻿namespace MaternityWard.ProfessionalWorkers
 {
     class ProfessionalWorker : Worker
     {
