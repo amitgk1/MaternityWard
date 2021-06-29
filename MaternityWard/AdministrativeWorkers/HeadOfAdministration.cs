@@ -1,12 +1,15 @@
-﻿namespace MaternityWard.AdministrativeWorkers.HeadOfAdministration
+﻿using System.Collections.Generic;
+
+namespace MaternityWard
 {
     class HeadOfAdministration : AdministrativeWorker
     {
-        public HeadOfAdministration() : base(getHeadOfAdministrationRanks()) { }
-
-        static WorkerRank[] getHeadOfAdministrationRanks()
+        public HeadOfAdministration(string name) : base(name)
         {
-            return new WorkerRank[] { WorkerRank.manager, WorkerRank.decisionMaker };
+            List<object> foodHanderRanks = new List<object>();
+            foodHanderRanks.Add(new ManagerRank());
+            foodHanderRanks.Add(new DecisionMakerRank());
+            Ranks = foodHanderRanks;
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿namespace MaternityWard.AdministrativeWorkers.Cook.SousChef
+﻿namespace MaternityWard
 {
     class SousChef : Cook
     {
-        public SousChef() : base(getSousChefRanks()) { }
+        public SousChef(string name) : base(name, getSousChefRanks()) { }
 
-        static WorkerRank[] getSousChefRanks()
+        static IHourlyPaidRank[] getSousChefRanks()
         {
-            return new WorkerRank[] { WorkerRank.specialist };
+            return new IHourlyPaidRank[] { new SpecialistRank() };
         }
     }
 }

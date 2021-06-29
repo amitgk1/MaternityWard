@@ -1,12 +1,14 @@
-﻿namespace MaternityWard.AdministrativeWorkers.Cleaner.MasterCleaner
+﻿using System.Collections.Generic;
+
+namespace MaternityWard
 {
     class MasterCleaner : AdministrativeWorker
     {
-        public MasterCleaner() : base(ranks: getMasterCleanerRanks()) { }
-
-        static WorkerRank[] getMasterCleanerRanks()
+        public MasterCleaner(string name) : base(name)
         {
-            return new WorkerRank[] { WorkerRank.senior };
+            List<object> masterCleanerRanks = new List<object>();
+            masterCleanerRanks.Add(new SeniorRank());
+            Ranks = masterCleanerRanks;
         }
     }
 }
