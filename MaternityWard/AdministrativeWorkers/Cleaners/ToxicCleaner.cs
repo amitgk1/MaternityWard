@@ -1,4 +1,4 @@
-﻿namespace MaternityWard
+﻿namespace MaternityWard.AdministrativeWorkers.Cleaner.ToxicCleaner
 {
     class ToxicCleaner : Cleaner
     {

@@ -1,4 +1,4 @@
-﻿namespace MaternityWard
+﻿namespace MaternityWard.AdministrativeWorkers.Cook
 {
     class Cook : AdministrativeWorker
     {

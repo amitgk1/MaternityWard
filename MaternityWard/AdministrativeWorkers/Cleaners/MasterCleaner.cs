@@ -1,4 +1,4 @@
-﻿namespace MaternityWard
+﻿namespace MaternityWard.AdministrativeWorkers.Cleaner.MasterCleaner
 {
     class MasterCleaner : AdministrativeWorker
     {
