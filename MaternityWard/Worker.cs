@@ -1,11 +1,12 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 
 namespace MaternityWard
 {
     class Worker
     {
         int? riskPercentage;
-        object[] ranks;
+        List<object> ranks = new List<object>();
 
         public string Type
         { get; set; }
@@ -22,7 +23,7 @@ namespace MaternityWard
             Name = name;
         }
 
-        public object[] Ranks
+        public List<object> Ranks
         {
             get { return ranks; }
             set
@@ -31,7 +32,7 @@ namespace MaternityWard
                 {
                     if (rank is IHourlyPaidRank || rank is IConstPaidRank)
                     {
-                        ranks[ranks.Length] = rank;
+                        ranks.Add(rank);
                     }
                     else
                     {
