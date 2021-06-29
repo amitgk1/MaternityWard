@@ -2,11 +2,11 @@
 {
     class Chef: Cook
     {
-        public Chef() : base(getChefRanks()) { }
+        public Chef(string name) : base(name, getChefRanks()) { }
 
-        static WorkerRank[] getChefRanks()
+        static IHourlyPaidRank[] getChefRanks()
         {
-            return new WorkerRank[] { WorkerRank.specialist, WorkerRank.decisionMaker };
+            return new IHourlyPaidRank[] { new SpecialistRank(), new DecisionMakerRank() };
         }
     }
 }

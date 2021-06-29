@@ -1,12 +1,15 @@
-﻿namespace MaternityWard.AdministrativeWorkers.Cleaner.ToxicCleaner
+﻿namespace MaternityWard
 {
     class ToxicCleaner : Cleaner
     {
-        public ToxicCleaner() : base(getToxicCleanerRanks(), 20) { }
-
-        static WorkerRank[] getToxicCleanerRanks()
+        public ToxicCleaner(string name) : base(name, getToxicCleanerRanks())
         {
-            return new WorkerRank[] { WorkerRank.decisionMaker, WorkerRank.manager, WorkerRank.atRisk };
+            RiskPercentage = 20;
+        }
+
+        static IHourlyPaidRank[] getToxicCleanerRanks()
+        {
+            return new IHourlyPaidRank[] { new DecisionMakerRank(), new SpecialistRank()};
         }
     }
 }
