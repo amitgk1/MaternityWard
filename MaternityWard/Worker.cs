@@ -17,7 +17,7 @@ namespace MaternityWard
         const double MANAGER_SALARY = 123456789;
 
         protected WorkerRank[] ranks;
-        Nullable<int> riskPercentage;
+        int? riskPercentage;
         double workHours = 0;
         string workerType;
 
@@ -29,10 +29,13 @@ namespace MaternityWard
         }
 
         public double WorkHours
-            { get; set; }
+        { get; set; }
 
         public string WorkerType
-            { get; set; }
+        {
+            get { return workerType; }
+            set { workerType = value; }
+        }
 
         public static WorkerRank[] AddRankFirst(WorkerRank[] ranks, WorkerRank firstRank)
         {
@@ -47,7 +50,7 @@ namespace MaternityWard
             double raisedWorkHours = workHours;
             foreach (WorkerRank rank in ranks)
             {
-                switch(rank)
+                switch (rank)
                 {
                     case WorkerRank.minor: continue;
                     case WorkerRank.senior:
