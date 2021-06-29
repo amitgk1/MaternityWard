@@ -2,7 +2,6 @@
 {
     class AdministrativeWorker : Worker
     {
-
-        public AdministrativeWorker(WorkerRank[] ranks, int? riskPercentage = null) : base(ranks, riskPercentage, "Administrative") { }
+        public AdministrativeWorker(string name) : base("Administrative", name) { }
     }
 }
