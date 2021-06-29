@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace MaternityWard
@@ -71,6 +71,10 @@ namespace MaternityWard
                 {
                     salary += (rank as IConstPaidRank).calculateSalary();
                 }
+            }
+            if (riskPercentage.HasValue)
+            {
+                salary *= riskPercentage.Value;
             }
             return salary;
         }
