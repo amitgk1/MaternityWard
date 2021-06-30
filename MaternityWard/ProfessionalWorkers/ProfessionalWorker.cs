@@ -2,6 +2,6 @@
 {
     class ProfessionalWorker : Worker
     {
-        public ProfessionalWorker(string name) : base(name, "Professional") { }
+        public ProfessionalWorker(string name) : base("Professional", name) { }
     }
 }
