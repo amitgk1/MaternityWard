@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MaternityWard.ProfessionalWorkers
+﻿namespace MaternityWard
 {
-    class Class1
+    class InternDoctor : ProfessionalWorker
     {
+        public InternDoctor(string name) : base(name)
+        {
+            AddRank(new MinorRank());
+        }
     }
 }
