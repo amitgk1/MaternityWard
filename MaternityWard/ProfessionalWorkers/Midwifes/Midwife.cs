@@ -1,7 +1,7 @@
-﻿namespace MaternityWard.ProfessionalWorkers.Midwife
+﻿namespace MaternityWard
 {
-    class Midwife : ProfessionalWorker
+    class Midwife : Nurse
     {
-        public Midwife(WorkerRank[] ranks) : base(ranks: AddRankFirst(ranks, WorkerRank.senior)) { }
+        public Midwife(string name) : base(name, new SeniorRank()) { }
     }
 }
