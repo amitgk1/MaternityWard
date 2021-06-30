@@ -30,15 +30,20 @@ namespace MaternityWard
             {
                 foreach (object rank in value)
                 {
-                    if (rank is IHourlyPaidRank || rank is IConstPaidRank)
-                    {
-                        ranks.Add(rank);
-                    }
-                    else
-                    {
-                        throw new Exception("rank should be one the types: IHourlyPaidRank, IConstPaidRank");
-                    }
+                    AddRank(rank);
                 }
+            }
+        }
+
+        public void AddRank(object rank)
+        {
+            if (rank is IHourlyPaidRank || rank is IConstPaidRank)
+            {
+                ranks.Add(rank);
+            }
+            else
+            {
+                throw new Exception("rank should be one the types: IHourlyPaidRank, IConstPaidRank");
             }
         }
 
