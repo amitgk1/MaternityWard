@@ -6,9 +6,7 @@ namespace MaternityWard
     {
         public MasterCleaner(string name) : base(name)
         {
-            List<object> masterCleanerRanks = new List<object>();
-            masterCleanerRanks.Add(new SeniorRank());
-            Ranks = masterCleanerRanks;
+            AddRank(new SeniorRank());
         }
     }
 }

@@ -6,9 +6,7 @@ namespace MaternityWard
     {
         public ShiftManagerCleaner(string name) : base(name)
         {
-            List<object> shiftManagerCleaner = new List<object>();
-            shiftManagerCleaner.Add(new SeniorRank());
-            Ranks = shiftManagerCleaner;
+            AddRank(new DecisionMakerRank());
         }
     }
 }

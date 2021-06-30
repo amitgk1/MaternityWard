@@ -6,10 +6,8 @@ namespace MaternityWard
     {
         public HeadOfAdministration(string name) : base(name)
         {
-            List<object> foodHanderRanks = new List<object>();
-            foodHanderRanks.Add(new ManagerRank());
-            foodHanderRanks.Add(new DecisionMakerRank());
-            Ranks = foodHanderRanks;
+            AddRank(new ManagerRank());
+            AddRank(new DecisionMakerRank());
         }
     }
 }

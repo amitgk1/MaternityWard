@@ -6,9 +6,7 @@ namespace MaternityWard
     {
         public FoodHander(string name) : base(name)
         {
-            List<object> foodHanderRanks = new List<object>();
-            foodHanderRanks.Add(new MinorRank());
-            Ranks = foodHanderRanks;
+            AddRank(new MinorRank());
         }
     }
 }

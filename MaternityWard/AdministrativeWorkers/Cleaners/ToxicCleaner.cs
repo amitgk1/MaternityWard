@@ -2,14 +2,11 @@
 {
     class ToxicCleaner : Cleaner
     {
-        public ToxicCleaner(string name) : base(name, getToxicCleanerRanks())
+        public ToxicCleaner(string name) : base(name)
         {
             RiskPercentage = 20;
-        }
-
-        static IHourlyPaidRank[] getToxicCleanerRanks()
-        {
-            return new IHourlyPaidRank[] { new DecisionMakerRank(), new SpecialistRank()};
+            AddRank(new DecisionMakerRank());
+            AddRank(new SpecialistRank());
         }
     }
 }
