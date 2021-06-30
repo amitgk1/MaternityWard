@@ -1,7 +1,7 @@
-﻿namespace MaternityWard.ProfessionalWorkers
+﻿namespace MaternityWard
 {
     class ProfessionalWorker : Worker
     {
-        public ProfessionalWorker(WorkerRank[] ranks, int? riskPercentage = null) : base(ranks, riskPercentage, "Professional") { }
+        public ProfessionalWorker(string name) : base(name, "Professional") { }
     }
 }
