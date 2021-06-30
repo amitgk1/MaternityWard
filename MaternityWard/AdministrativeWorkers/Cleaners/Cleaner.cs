@@ -1,7 +1,12 @@
-﻿namespace MaternityWard
+﻿using System.Collections.Generic;
+
+namespace MaternityWard
 {
     class Cleaner : AdministrativeWorker
     {
-        public Cleaner(WorkerRank[] ranks, int? riskPercentage = null) : base(ranks: AddRankFirst(ranks, WorkerRank.minor), riskPercentage) { }
+        public Cleaner(string name) : base(name)
+        {
+            AddRank(new MinorRank());
+        }
     }
 }

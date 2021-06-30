@@ -1,12 +1,12 @@
-﻿namespace MaternityWard
+﻿using System.Collections.Generic;
+
+namespace MaternityWard
 {
     class ShiftManagerCleaner : AdministrativeWorker
     {
-        public ShiftManagerCleaner() : base(getShiftManagerCleanerRanks()) { }
-
-        static WorkerRank[] getShiftManagerCleanerRanks()
+        public ShiftManagerCleaner(string name) : base(name)
         {
-            return new WorkerRank[] { WorkerRank.decisionMaker };
+            AddRank(new DecisionMakerRank());
         }
     }
 }

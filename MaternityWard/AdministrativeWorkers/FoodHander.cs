@@ -1,12 +1,12 @@
-﻿namespace MaternityWard
+﻿using System.Collections.Generic;
+
+namespace MaternityWard
 {
     class FoodHander : AdministrativeWorker
     {
-        public FoodHander() : base(getFoodHanderRanks()) { }
-
-        static WorkerRank[] getFoodHanderRanks()
+        public FoodHander(string name) : base(name)
         {
-            return new WorkerRank[] { WorkerRank.minor };
+            AddRank(new MinorRank());
         }
     }
 }

@@ -2,11 +2,9 @@
 {
     class SousChef : Cook
     {
-        public SousChef() : base(getSousChefRanks()) { }
-
-        static WorkerRank[] getSousChefRanks()
+        public SousChef(string name) : base(name)
         {
-            return new WorkerRank[] { WorkerRank.specialist };
+            AddRank(new SpecialistRank());
         }
     }
 }

@@ -2,11 +2,11 @@
 {
     class ToxicCleaner : Cleaner
     {
-        public ToxicCleaner() : base(getToxicCleanerRanks(), 20) { }
-
-        static WorkerRank[] getToxicCleanerRanks()
+        public ToxicCleaner(string name) : base(name)
         {
-            return new WorkerRank[] { WorkerRank.decisionMaker, WorkerRank.manager, WorkerRank.atRisk };
+            RiskPercentage = 20;
+            AddRank(new DecisionMakerRank());
+            AddRank(new SpecialistRank());
         }
     }
 }

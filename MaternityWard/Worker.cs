@@ -1,82 +1,87 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MaternityWard
 {
-    enum WorkerRank
-    {
-        minor,
-        senior,
-        specialist,
-        decisionMaker,
-        manager,
-        atRisk,
-    };
     class Worker
     {
-        const int HOURLY_WAGE_RATE = 100;
-        const double MANAGER_SALARY = 123456789;
-
-        protected WorkerRank[] ranks;
         int? riskPercentage;
-        double workHours = 0;
-        string workerType;
+        List<object> ranks = new List<object>();
 
-        public Worker(WorkerRank[] ranks, int? riskPercentage = null, string workerType = null)
-        {
-            this.ranks = ranks;
-            this.riskPercentage = riskPercentage;
-            this.workerType = workerType;
-        }
+        public string Type
+        { get; set; }
+
+        public string Name
+        { get; set; }
 
         public double WorkHours
         { get; set; }
 
-        public string WorkerType
+        public Worker(string type, string name)
         {
-            get { return workerType; }
-            set { workerType = value; }
+            Type = type;
+            Name = name;
         }
 
-        public static WorkerRank[] AddRankFirst(WorkerRank[] ranks, WorkerRank firstRank)
+        public List<object> Ranks
         {
-            WorkerRank[] newRanks = new WorkerRank[ranks.Length + 1];
-            newRanks[0] = firstRank;
-            ranks.CopyTo(newRanks, 1);
-            return newRanks;
-        }
-
-        public double calculateSalary()
-        {
-            double raisedWorkHours = workHours;
-            foreach (WorkerRank rank in ranks)
+            get { return ranks; }
+            set
             {
-                switch (rank)
+                foreach (object rank in value)
                 {
-                    case WorkerRank.minor: continue;
-                    case WorkerRank.senior:
-                        raisedWorkHours *= 1.05;
-                        break;
-                    case WorkerRank.specialist:
-                        raisedWorkHours *= 1.3;
-                        break;
-                    case WorkerRank.decisionMaker:
-                        raisedWorkHours *= 1.5;
-                        if (workHours > 50)
-                        {
-                            raisedWorkHours += 200;
-                        }
-                        break;
-                    case WorkerRank.manager:
-                        return MANAGER_SALARY;
-                    case WorkerRank.atRisk:
-                        if (riskPercentage.HasValue)
-                        {
-                            raisedWorkHours *= riskPercentage.Value;
-                        }
-                        break;
+                    AddRank(rank);
                 }
             }
-            return raisedWorkHours * HOURLY_WAGE_RATE;
+        }
+
+        public void AddRank(object rank)
+        {
+            if (rank is IHourlyPaidRank || rank is IConstPaidRank)
+            {
+                ranks.Add(rank);
+            }
+            else
+            {
+                throw new Exception("rank should be one the types: IHourlyPaidRank, IConstPaidRank");
+            }
+        }
+
+        public int? RiskPercentage
+        {
+            get { return riskPercentage; }
+            set
+            {
+                if (value >= 1 && value <= 100)
+                {
+                    riskPercentage = value;
+                }
+                else
+                {
+                    throw new Exception("risk percentage must be a number between 1 and 100");
+                }
+            }
+        }
+
+        public double getTotalSalary()
+        {
+            double salary = 0;
+            foreach (object rank in ranks)
+            {
+                if (rank is IHourlyPaidRank)
+                {
+                    salary += (rank as IHourlyPaidRank).calculateSalary(WorkHours);
+                }
+                else
+                {
+                    salary += (rank as IConstPaidRank).calculateSalary();
+                }
+            }
+            if (riskPercentage.HasValue)
+            {
+                salary *= riskPercentage.Value;
+            }
+            return salary;
         }
     }
 }
